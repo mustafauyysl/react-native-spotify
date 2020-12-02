@@ -1,19 +1,20 @@
 import React,{Component} from 'react';
-import {View,Text,StyleSheet} from 'react-native';
+import {View,StyleSheet} from 'react-native';
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import CircleContainer from '../../components/CircleContainer';
 import PlayerContainer from '../../components/PlayerContainer';
 import SquareContainer from '../../components/SquareContainer';
 import Title from '../../components/Title';
 import * as Songs from '../../data/songs';
 import {connect} from 'react-redux'
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 class HomeScreen extends Component {
 
     renderItem = (item) => {
        return (
             <SquareContainer 
+                song={item.item}
                 name={item.item.name}
                 img={item.item.img}
             />
@@ -33,7 +34,6 @@ class HomeScreen extends Component {
         return (
             <View style={styles.container}>
                 <ScrollView>
-                    <SafeAreaView />
                     <Title title='Just For You'/>
                     <FlatList 
                         data={Songs.songs}
@@ -62,9 +62,13 @@ class HomeScreen extends Component {
                         
                     />
                 </ScrollView>
-                <PlayerContainer 
-                    name={this.props.playSong.name}
-                />
+                    { this.props.playSong.id ? 
+                        <PlayerContainer 
+                            name={this.props.playSong.name}
+                            img={this.props.playSong.img}
+                        /> : null 
+                    }
+
             </View>
         )
     }

@@ -11,7 +11,7 @@ class PlayerContainer extends Component{
             <View style={styles.container}>
                 <Image 
                     style={styles.img}
-                    source={require('../assets/img/songs/song1.jpg')}
+                    source={this.props.img}
                 />
                 <Text style={styles.title}>{this.props.name}</Text>
                 <TouchableOpacity style={styles.buttonContainer}>
