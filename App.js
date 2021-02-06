@@ -5,12 +5,12 @@ import configureStore from './redux/reducers/configureStore';
 
 const store = configureStore();
 
-const App = props => {
+const App = (props) => {
   return (
     <Provider store={store}>
-        <MainNavigator />
+      <MainNavigator />
     </Provider>
-  ) 
-}
+  );
+};
 
 export default App;
